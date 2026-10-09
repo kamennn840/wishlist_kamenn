@@ -111,8 +111,8 @@ function render(){
     const ci=Math.max(0,D.cats.indexOf(i.cat))%4,u=safeUrl(i.url),t=!!taken[i.id];
     const photo='<div class="ph">'+(i.img?'<img src="'+esc(i.img)+'" alt="'+esc(i.title)+'">':'<svg class="pig" aria-hidden="true"><use href="#pig"/></svg>')+'</div>';
     const ctl=editing?'<div class="mini"><button class="btn ghost" data-act="up" data-id="'+i.id+'" aria-label="Выше">↑</button><button class="btn ghost" data-act="down" data-id="'+i.id+'" aria-label="Ниже">↓</button><button class="btn ghost" data-act="edititem" data-id="'+i.id+'">Изменить</button><button class="btn ghost" data-act="del" data-id="'+i.id+'">'+(armed===i.id?"Точно?":"Удалить")+'</button></div>'
-      :'<button class="btn" data-act="take" data-id="'+i.id+'">'+(t?"Отменить":"Мне уже дарят")+'</button>';
-    return '<article class="card c'+ci+(t?" taken":"")+'"><span class="badge">Уже дарят</span>'+photo+
+      :'';
+    return '<article class="card c'+ci+'">'+photo+
       (i.price?'<span class="price">'+esc(i.price)+'</span>':'')+'<h2>'+esc(i.title)+'</h2>'+(i.note?'<p>'+esc(i.note)+'</p>':'')+
       '<div class="row">'+(u?'<a class="btn ghost" href="'+esc(u)+'" target="_blank" rel="noopener">В магазин</a>':'<span></span>')+(editing?'':ctl)+'</div>'+(editing?'<div class="row">'+ctl+'</div>':'')+'</article>';
   }).join("");
